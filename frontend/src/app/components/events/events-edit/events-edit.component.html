@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <h2>Lista Evenimentelor (pentru edit)</h2>
+
+    <div class="form-group">
+        <input [(ngModel)]="title" placeholder="Caută după titlu" class="form-control"/>
+        <button (click)="searchTitle()" class="btn btn-primary mt-2">Caută</button>
+    </div>
+
+    <ul class="list-group">
+        <li *ngFor="let event of events; let i = index"
+            (click)="setActiveEvent(event, i)"
+            [class.active]="currentIndex === i"
+            class="list-group-item list-group-item-action">
+            {{ event.title }}
+        </li>
+    </ul>
+
+    <button (click)="removeAllEvents()" class="btn btn-danger mt-2">Șterge toate evenimentele</button>
+</div>

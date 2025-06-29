@@ -1,0 +1,170 @@
+.program-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.day-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.day-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 30px;
+  background: rgba(33, 122, 83, 0.1);
+  color: #217a53;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+.day-btn.active,
+.day-btn:hover {
+  background: #30aa60;
+  color: #fff;
+}
+
+.event-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-card {
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+/* Vizual distinct pentru trainer vs subscribed */
+.event-card.trainer-event {
+  border-left: 6px solid #ffb74d;
+}
+.event-card.subscribed-event {
+  border-left: 6px solid #30aa60;
+}
+
+.event-left {
+  flex: 0 0 200px;
+}
+.event-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.event-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+}
+
+.event-info {
+  flex: 1;
+}
+.event-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.4rem;
+  color: #217a53;
+}
+.event-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.6rem;
+}
+.event-time, .event-days {
+  font-size: 0.95rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.event-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.trainer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.trainer-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.event-actions button {
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Edit button (trainer) */
+.btn-edit {
+  background: #ffb74d;
+  color: #fff;
+}
+.btn-edit:hover {
+  background: #ffb22e;
+}
+
+/* Subscribed badge */
+.btn-disabled {
+  background: #e0e0e0;
+  color: #757575;
+  cursor: default;
+}
+
+.day-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* butoanele se mută pe rânduri mici pe ecrane înguste */
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.day-btn {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 30px;
+  background: rgba(33, 122, 83, 0.1);
+  color: #217a53;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.day-btn:hover {
+  background: #30aa60;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.day-btn.active {
+  background: #30aa60;
+  color: #fff;
+  box-shadow: 0 0 0 2px #c8efd7;
+}

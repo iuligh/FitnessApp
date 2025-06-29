@@ -1,0 +1,133 @@
+:root {
+  --green-start: #43e97b;
+  --green-end: #38f9d7;
+  --glass-white: rgba(255, 255, 255, 0.25);
+  --text-dark: #1b1b1b;
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #e8fdf5, #ffffff);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.background-section {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, var(--green-start), var(--green-end));
+  clip-path: ellipse(100% 100% at 50% 0%);
+}
+
+.content-wrapper {
+  margin-top: -120px;
+  padding: 40px;
+  background: transparent;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.glass-card {
+  backdrop-filter: blur(12px);
+  background: var(--glass-white);
+  padding: 24px 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  color: var(--text-dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card h2 {
+  margin-bottom: 10px;
+  color: #30aa60;
+}
+
+.info-utile ul {
+  padding-left: 1.5rem;
+}
+
+.map-container iframe {
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.facebook-button {
+  align-self: center;
+  background: linear-gradient(90deg, #30aa60, #217a53);
+  border: none;
+  color: white;
+  padding: 14px 26px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(33, 122, 83, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.facebook-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(33, 122, 83, 0.5);
+}
+
+.facebook-button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.3);
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.facebook-button:hover::after {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.facebook-button i {
+  font-size: 1.3rem;
+  z-index: 1;
+}
+
+.facebook-button span {
+  z-index: 1;
+}
+
+/* Fade-in effect */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out both;
+}

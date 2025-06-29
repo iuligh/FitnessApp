@@ -1,0 +1,89 @@
+<!-- app.component.html -->
+<p-toast position="top-right"></p-toast>
+<router-outlet></router-outlet>
+
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark custom-navbar">
+    <ul class="navbar-nav me-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a routerLink="rooms" class="nav-link custom-nav-link">
+          <i class="pi pi-home custom-icon"></i> Acasă
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="program" class="nav-link custom-nav-link">
+          <i class="pi pi-calendar custom-icon"></i> Program
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="subscription/plans" class="nav-link custom-nav-link">
+          <i class="pi pi-credit-card custom-icon"></i> Abonamente
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="contact" class="nav-link custom-nav-link">
+          <i class="pi pi-envelope custom-icon"></i> Contact
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a routerLink="register" class="nav-link custom-nav-link">
+          <i class="pi pi-user-plus custom-icon"></i> Inregistrare
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="login" class="nav-link custom-nav-link">
+          <i class="pi pi-sign-in custom-icon"></i> Conectare
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a routerLink="events-add" class="nav-link custom-nav-link">
+          <i class="pi pi-plus custom-icon"></i> Adaugare evenimente
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a routerLink="events" class="nav-link custom-nav-link">
+          <i class="pi pi-calendar-plus custom-icon"></i> Editare evenimente
+        </a>
+      </li>
+      <li class="nav-item notification-item" [class.show]="dropdownVisible">
+        <a class="nav-link custom-nav-link bell-btn" (click)="toggleNotifications()">
+          <i class="pi pi-bell custom-icon"></i>
+          <span class="badge" *ngIf="unreadCount">{{ unreadCount }}</span>
+        </a>
+        <div class="notification-dropdown" *ngIf="dropdownVisible">
+          <div *ngIf="notifications.length === 0" class="dropdown-item">
+            Nicio notificare
+          </div>
+          <div *ngFor="let note of notifications" class="dropdown-item d-flex justify-content-between align-items-center">
+            <div class="note-content">
+              <span>{{ note.message }}</span>
+              <small class="text-muted">{{ note.createdAt | date:'shortTime' }}</small>
+            </div>
+            <button class="close-btn" (click)="markAsRead(note.id)">&times;</button>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a routerLink="profile" class="nav-link custom-nav-link">
+          <i class="pi pi-user custom-icon"></i> {{ username }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link custom-nav-link" (click)="logout()">
+          <i class="pi pi-sign-out custom-icon"></i> Deconectare
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container mt-3 bg-container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</div>

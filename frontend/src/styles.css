@@ -1,0 +1,79 @@
+.p-toast .p-toast-message-success {
+  background: #d1f5dc;
+  border-left: 5px solid #28a745;
+  color: #00ff0d;
+}
+
+.p-toast .p-toast-message-error {
+  background: #fcebea;
+  border-left: 5px solid #dc3545;
+  color: #ff0018;
+}
+
+/* Culori principale */
+:root {
+  --primary-green: #28a745;
+  --primary-green-dark: #218838;
+  --light-green-bg: #f0f9f4;
+  --accent-light: #e6f4ea;
+  --text-dark: #333333;
+}
+
+/* Reset & body */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--light-green-bg);
+  color: var(--text-dark);
+}
+
+/* Container principal */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.custom-navbar {
+  background: var(--primary-green);
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+}
+.custom-nav-link {
+  color: white;
+  transition: color 0.2s ease;
+}
+.custom-nav-link:hover {
+  color: var(--light-green-bg);
+}
+.custom-icon {
+  color: white;
+}
+
+/* Footer */
+.footer {
+  background: var(--primary-green-dark);
+  padding: 2rem 0;
+  color: white;
+  text-align: center;
+}
+.footer-link {
+  color: #cceedd;
+}
+.footer-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Container pagini */
+.bg-container {
+  flex: 1;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+}
+

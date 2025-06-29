@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #d3e9dc, #eafaf1); /* verde deschis */
+}
+
+.auth-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeSlide 0.8s ease-in-out;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-container.card {
+  background-color: #ffffff;
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card-container.card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #1e4d3a; /* verde închis */
+}
+
+input.form-control {
+  height: 44px;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+input.form-control:focus {
+  border-color: #2f6b4f;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 107, 79, 0.2);
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.btn {
+  background-color: #2f6b4f;
+  color: white;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1e4d3a;
+}
+
+.alert {
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.alert-success {
+  background-color: #d1f1da;
+  color: #1e4d3a;
+}
+
+.alert-danger,
+.alert-warning {
+  background-color: #fdecea;
+  color: #a94442;
+}

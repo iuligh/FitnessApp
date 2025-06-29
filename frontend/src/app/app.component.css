@@ -1,0 +1,184 @@
+:root {
+  --primary-green-light: #5edc92; /* nou: verde mai deschis */
+  --primary-green: #30aa60;
+  --primary-green-dark: #217a53;
+  --accent-orange: #ffb74d;
+  --nav-bg-gradient: linear-gradient(90deg, var(--primary-green-light) 0%, var(--primary-green-dark) 100%);
+  --nav-hover-bg: rgba(255, 255, 255, 0.15);
+  --icon-bubble: rgba(255, 255, 255, 0.08);
+  --nav-text: #f3f3e7; /* nu alb pur */
+}
+
+.custom-navbar {
+  background: var(--nav-bg-gradient) !important;
+  padding: 1.2rem 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border-bottom: 2px solid #ffffff22;
+}
+
+.custom-nav-link {
+  color: var(--nav-text) !important;
+  font-weight: 500;
+  position: relative;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(2px);
+}
+
+.custom-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--nav-hover-bg);
+  border-radius: 30px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.custom-nav-link:hover::before {
+  opacity: 1;
+}
+
+.custom-nav-link:hover,
+.router-link-active.custom-nav-link {
+  color: var(--accent-orange) !important;
+  text-shadow: 0 0 4px rgba(255, 183, 77, 0.7);
+}
+
+.custom-icon {
+  font-size: 1.35rem;
+  background: var(--icon-bubble);
+  padding: 8px;
+  border-radius: 50%;
+  color: var(--nav-text);
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 1;
+}
+
+.custom-nav-link:hover .custom-icon {
+  transform: scale(1.15);
+  background: white;
+  color: var(--primary-green-dark);
+}
+
+/* extindem custom-nav-link pentru clopoțel */
+.bell-btn {
+  position: relative;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.bell-btn:hover,
+.router-link-active.bell-btn {
+  background: var(--nav-hover-bg);
+  color: var(--accent-orange) !important;
+}
+
+.bell-btn .custom-icon {
+  font-size: 1.4rem;
+}
+
+/* badge-ul roșu puțin mai compact */
+.notification-item .badge {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background-color: #e53935;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+/* dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 110%;
+  right: 200px;
+  width: 500px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+/* scroll dacă sunt multe notificări */
+.notification-dropdown {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* fiecare linie */
+.notification-dropdown .dropdown-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-dropdown .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* conținutul notificării */
+.note-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-content span {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.note-content small {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* butonul X */
+.close-btn {
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0; /* PREVINE micșorarea în layout flex */
+  margin-left: 0.8rem;
+}
+
+.close-btn:hover {
+  background: var(--primary-green-dark);
+  color: white;
+}
+
+/* Asigură spațiu adecvat între text și buton */
+.notification-dropdown .dropdown-item {
+  gap: 1rem;
+}
+
+
+

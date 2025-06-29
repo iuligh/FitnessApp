@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="day-tabs">
+    <button *ngFor="let day of days"
+            class="day-btn"
+            [class.active]="day === selectedDay"
+            (click)="getEventsByDay(day)">
+      {{ day }}
+    </button>
+  </div>
+  <div class="event-cards">
+    <div *ngFor="let ev of events" class="event-card">
+      <!-- folosește același template ca și în detaliu-sala -->
+      <div class="event-left">
+        <img [src]="'assets/events/' + ev.imageName" alt="{{ ev.title }}" />
+      </div>
+      <div class="event-right">
+        <h4>{{ ev.title }}</h4>
+        <p>{{ ev.description }}</p>
+        <p><i class="fas fa-clock"></i>
+          {{ ev.startHour[0] }}:{{ ev.startHour[1] }} –
+          {{ ev.endHour[0] }}:{{ ev.endHour[1] }}
+        </p>
+        <p><i class="fas fa-calendar-alt"></i> {{ ev.days.join(', ') }}</p>
+        <div class="trainer-info">
+          <img [src]="'assets/' + ev.trainerImage" alt="{{ ev.trainerName }}" />
+          <span>{{ ev.trainerName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

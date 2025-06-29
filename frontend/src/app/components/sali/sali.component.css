@@ -1,0 +1,135 @@
+/* 1. Reset-uri minimale pentru container */
+.sali-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* 2. Titlu gradient + fade-in */
+.sali-list__title {
+  font-size: 2.7rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInTitle 0.8s ease-out both;
+}
+
+/* 3. Card glass + shadow + hover */
+.room-card {
+  display: flex;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  margin-bottom: 2rem;
+}
+.room-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 4. Secțiunea imagine */
+.room-card__img {
+  flex: 0 0 300px;
+  overflow: hidden;
+}
+.room-card__img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px 0 0 20px !important;
+  transition: transform 0.4s ease;
+}
+.room-card:hover .room-card__img img {
+  transform: scale(1.05);
+}
+
+/* 5. Conținut */
+.room-card__content {
+  flex: 1;
+  padding: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 6. Header + badge pulsant */
+.room-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.room-card__header h3 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #217a53 !important;
+}
+.badge {
+  background: linear-gradient(to right, #43e97b, #38f9d7) !important;
+  color: #fff !important;
+  padding: 0.5rem 1.2rem !important;
+  border-radius: 999px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(48, 170, 96, 0.2) !important;
+  animation: pulseBadge 1.8s infinite ease-in-out;
+  transition: transform 0.3s ease !important;
+}
+.badge i {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.room-card:hover .badge i {
+  transform: translateX(4px);
+}
+
+/* 7. Meta (adresă, oră etc) */
+.room-card__meta p {
+  margin: 0.6rem 0 !important;
+  color: #333 !important;
+  font-size: 1.05rem !important;
+  display: flex;
+  align-items: center;
+}
+.room-card__icon {
+  margin-right: 0.6rem !important;
+  color: #217a53 !important;
+  background: #e8f5e9 !important;
+  padding: 6px !important;
+  border-radius: 50% !important;
+  font-size: 1rem !important;
+}
+
+/* 8. Responsive */
+@media (max-width: 768px) {
+  .room-card {
+    flex-direction: column !important;
+  }
+  .room-card__img img {
+    border-radius: 20px 20px 0 0 !important;
+  }
+}
+
+/* 9. Animații */
+@keyframes fadeInTitle {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseBadge {
+  0%   { box-shadow: 0 0 0 0 rgba(48,170,96,0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(48,170,96,0); }
+  100% { box-shadow: 0 0 0 0 rgba(48,170,96,0); }
+}
+
+

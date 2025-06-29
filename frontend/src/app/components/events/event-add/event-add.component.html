@@ -1,0 +1,116 @@
+<!-- src/app/components/events/event-add/event-add.component.html -->
+<div class="container bg-container">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="title" class="form-label-lg"><strong>Title</strong></label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    required
+                    [(ngModel)]="eventDto.title"
+                    name="title"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="description" class="form-label-lg"><strong>Description</strong></label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    required
+                    [(ngModel)]="eventDto.description"
+                    name="description"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="trainer" class="form-label-lg"><strong>Trainer (ID)</strong></label>
+            <input
+                    type="number"
+                    class="form-control"
+                    id="trainer"
+                    required
+                    [(ngModel)]="eventDto.trainerId"
+                    name="trainerId"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="startHour" class="form-label-lg"><strong>Start Hour</strong></label>
+            <p-calendar
+                    [(ngModel)]="tempStart"
+                    [timeOnly]="true"
+                    [hourFormat]="'24'"
+                    [stepMinute]="30"
+                    [defaultDate]="defaultStartHour"
+                    name="startHour"
+            ></p-calendar>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="endHour" class="form-label-lg"><strong>End Hour</strong></label>
+            <p-calendar
+                    [(ngModel)]="tempEnd"
+                    [timeOnly]="true"
+                    [hourFormat]="'24'"
+                    [stepMinute]="30"
+                    [defaultDate]="defaultStartHour"
+                    name="endHour"
+            ></p-calendar>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="days" class="form-label-lg"><strong>Days</strong></label>
+            <div class="form-check" *ngFor="let day of days">
+              <input
+                      type="checkbox"
+                      class="form-check-input"
+                      [id]="day"
+                      [value]="day"
+                      (change)="toggleDay(day)"
+                      [checked]="selectedDays.includes(day)"
+              />
+              <label class="form-check-label" [for]="day">{{ day }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="imageUpload" class="form-label-lg"><strong>Upload Image</strong></label>
+            <input
+                    type="file"
+                    class="form-control-file"
+                    id="imageUpload"
+                    (change)="onFileSelected($event)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button (click)="saveEvent()" class="btn btn-success btn-lg mt-3">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="submitted">
+      <div class="text-center">
+        <h4 class="mt-4">Event was submitted successfully!</h4>
+        <button class="btn btn-success mt-2" (click)="newEvent()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

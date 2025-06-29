@@ -1,0 +1,64 @@
+
+<div class="room-detail-container fancy-view" *ngIf="!errorMessage">
+  <button class="back-btn" (click)="goBack()">← Înapoi la săli</button>
+  <div *ngIf="sala; else salaNotFound" class="room-card">
+    <div class="room-left">
+      <img
+        *ngIf="sala.imageUrl"
+        [src]="'assets/rooms/' + sala.imageUrl"
+        alt="{{ sala.name }}"
+        class="room-img"
+      />
+    </div>
+    <div class="room-right">
+      <h2 class="room-title animate__animated animate__fadeInDown">{{ sala.name }}</h2>
+      <p class="room-description">{{ sala.description }}</p>
+
+      <div class="room-info">
+        <p><i class="fas fa-map-marker-alt"></i> {{ sala.address }}, {{ sala.city }}</p>
+        <p><i class="fas fa-clock"></i> {{ sala.workingHours }}</p>
+        <p><i class="fas fa-phone-alt"></i> {{ sala.phoneNumber }}</p>
+        <p><i class="fas fa-envelope"></i> {{ sala.email }}</p>
+        <p><i class="fas fa-users"></i> Capacitate: {{ sala.capacity }} persoane</p>
+      </div>
+
+      <div id="map" class="room-map"></div>
+    </div>
+  </div>
+
+  <h3 class="section-title">Evenimente programate aici</h3>
+  <div *ngIf="events.length === 0" class="no-events">Nu există evenimente.</div>
+
+  <div class="event-cards">
+    <div class="event-card animate__animated animate__fadeInUp" *ngFor="let ev of events">
+      <div class="event-left">
+        <img [src]="'assets/events/' + ev.imageName" alt="{{ ev.title }}" class="event-img"/>
+      </div>
+
+      <div class="event-right">
+        <div class="event-info">
+          <h4 class="event-title">{{ ev.title }}</h4>
+          <p class="event-description">{{ ev.description }}</p>
+          <p><i class="fas fa-clock"></i> {{ ev.startHour[0] }}:{{ ev.startHour[1] | number: '2.0' }} - {{ ev.endHour[0] }}:{{ ev.endHour[1] | number: '2.0' }}</p>
+          <p><i class="fas fa-calendar-alt"></i> {{ ev.days.join(', ') }}</p>
+        </div>
+
+        <div class="event-footer">
+          <div class="trainer-info">
+            <img *ngIf="ev.trainerImage" [src]="'assets/' + ev.trainerImage" alt="{{ ev.trainerName }}" class="trainer-avatar" />
+            <span>{{ ev.trainerName }}</span>
+          </div>
+
+          <div class="event-actions">
+            <a *ngIf="canEditEvent(ev)" [routerLink]="['/events/', ev.id]" class="btn-details">Editează</a>
+            <button class="btn-enroll" (click)="enroll(ev.id)">Înrolează-te</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #salaNotFound>
+  <div class="error-message">Sala nu a fost găsită.</div>
+</ng-template>

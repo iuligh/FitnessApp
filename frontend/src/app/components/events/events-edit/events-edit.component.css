@@ -1,0 +1,46 @@
+.event-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.event-info-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.event-column {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.event-column:last-child {
+  margin-right: 0;
+}
+
+.event-image-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.event-image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.edit-form .form-group {
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+.badge-warning {
+  margin-top: 20px;
+}

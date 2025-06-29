@@ -1,0 +1,40 @@
+<div *ngIf="currentUser; else loginPrompt" class="profile-wrapper">
+  <div class="profile-card">
+    <img
+      [src]="'assets/' + currentUser.profileImageUrl || 'assets/default.png'"
+      alt="Poza profil"
+      class="profile-image"
+    />
+    <h2 class="username">{{ currentUser.username }}</h2>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+      <div class="form-group">
+        <label for="fullName">Nume complet</label>
+        <input id="fullName" type="text" formControlName="fullName"/>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Telefon</label>
+        <input id="phoneNumber" type="text" formControlName="phoneNumber"/>
+      </div>
+      <div class="form-group">
+        <label for="city">Oraș</label>
+        <input id="city" type="text" formControlName="city"/>
+      </div>
+      <div class="form-group">
+        <label for="address">Adresă</label>
+        <input id="address" type="text" formControlName="address"/>
+      </div>
+      <div class="form-group">
+        <label for="profileImage">Poză profil</label>
+        <input id="profileImage" type="file" (change)="onFileSelected($event)"/>
+      </div>
+      <button type="submit" [disabled]="profileForm.invalid">Salvează</button>
+    </form>
+  </div>
+</div>
+
+<ng-template #loginPrompt>
+  <div class="centered-container">
+    <p class="text-muted">Please login.</p>
+  </div>
+</ng-template>

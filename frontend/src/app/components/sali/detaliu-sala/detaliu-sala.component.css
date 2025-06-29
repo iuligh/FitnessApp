@@ -1,0 +1,207 @@
+.room-detail-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #2d7a42;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.room-card {
+  display: flex;
+  gap: 2rem;
+  background: #f7fff9;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-3px);
+}
+
+.room-left {
+  flex: 1;
+}
+
+.room-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.room-right {
+  flex: 2;
+}
+
+.room-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #217a53;
+}
+
+.room-description {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.room-info p {
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.room-map {
+  height: 250px;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+
+.section-title {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  color: #217a53;
+}
+
+.event-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.event-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+}
+
+.event-left {
+  flex: 0 0 240px;
+}
+
+.event-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.event-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+}
+
+.event-info {
+  margin-bottom: 1rem;
+}
+
+.event-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c7a61;
+}
+
+.event-description {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.event-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trainer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.trainer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3ecf8e;
+}
+
+.event-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-details {
+  background: #217a53;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn-details:hover {
+  background: #185d3f;
+}
+
+.btn-enroll {
+  background:#3ecf8e;
+  color:white;
+  border:none;
+  padding:0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor:pointer;
+  transition: background 0.2s;
+}
+
+.btn-enroll:hover {
+  background:#34b37a;
+}
+
+.btn-details {
+  background: #4063b5;
+}
+
+.btn-details:hover {
+  background: #2e4b94;
+}
+
+.p-toast {
+  z-index: 10000 !important;
+  width: auto;
+  max-width: 350px;
+}
+
+.p-toast-message {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+}

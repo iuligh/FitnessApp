@@ -1,0 +1,52 @@
+<div class="sali-list container mt-5">
+  <h2 class="sali-list__title mb-4">Lista sălilor de fitness</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!errorMessage && rooms.length === 0" class="alert alert-info text-center">
+    Nu există săli de afișat.
+  </div>
+
+  <div *ngFor="let room of rooms" class="room-card mb-5" (click)="goToDetails(room)">
+    <div class="room-card__img">
+      <img
+        *ngIf="room.imageUrl; else placeholderImage"
+        [src]="'assets/rooms/' + room.imageUrl"
+        alt="{{ room.name }}"
+      />
+      <ng-template #placeholderImage>
+        <img
+          src="assets/rooms/placeholder.jpg"
+          alt="Placeholder Sala"
+        />
+      </ng-template>
+    </div>
+    <div class="room-card__content">
+      <div class="room-card__header">
+        <h3>{{ room.name }}</h3>
+        <span class="badge">Vezi detalii <i class="fas fa-chevron-right"></i></span>
+      </div>
+
+      <div class="room-card__meta">
+        <p>
+          <i class="fas fa-map-marker-alt room-card__icon"></i>
+          {{ room.address || '-' }}, {{ room.city || '-' }}
+        </p>
+        <p>
+          <i class="fas fa-clock room-card__icon"></i>
+          Program: {{ room.workingHours || '-' }}
+        </p>
+        <p *ngIf="room.neighborhood">
+          <i class="fas fa-city room-card__icon"></i>
+          Cartier: {{ room.neighborhood }}
+        </p>
+      </div>
+
+<!--      <div class="room-card__tags" *ngIf="room.tags?.length">-->
+<!--        <span *ngFor="let tag of room.tags">{{ tag }}</span>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,203 @@
+<!-- src/app/components/events/event-detail/event-detail.component.html -->
+
+<div class="container bg-container">
+  <div *ngIf="viewMode">
+    <div *ngIf="currentEvent; else noEventSelected">
+      <h4>Event</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <label class="form-label-lg"><strong>Title:</strong></label>
+          {{ currentEvent.title }}
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-lg"><strong>Description:</strong></label>
+          {{ currentEvent.description }}
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-lg"><strong>Days:</strong></label>
+          {{ getDays().join(', ') }}
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-lg"><strong>Start Hour:</strong></label>
+          {{ currentEvent.startHour }}
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-lg"><strong>End Hour:</strong></label>
+          {{ currentEvent.endHour }}
+        </div>
+        <div class="col-md-4">
+          <label class="form-label-lg"><strong>Trainer:</strong></label>
+          {{ currentEvent.trainerName }}
+        </div>
+<!--        <div class="col-md-4">-->
+<!--          <label class="form-label-lg"><strong>Room:</strong></label>-->
+<!--          {{ currentEvent.roomName }}-->
+<!--        </div>-->
+        <div class="col-12 mt-3">
+          <img
+                  *ngIf="currentEvent.imageName"
+                  [src]="'assets/' + currentEvent.imageName"
+                  alt="Event Image"
+                  class="event-image"
+          />
+        </div>
+      </div>
+      <a
+              class="badge badge-warning"
+              style="background-color: black; border-color: black;"
+              [routerLink]="['/events', currentEvent.id]"
+      >
+        Edit
+      </a>
+    </div>
+    <ng-template #noEventSelected>
+      <p>Please click on an Event...</p>
+    </ng-template>
+  </div>
+
+  <div *ngIf="!viewMode">
+    <div *ngIf="currentEvent; else cannotAccessEvent">
+      <div class="edit-form">
+        <h4>Event</h4>
+        <form (ngSubmit)="saveUpdatedEvent()">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="title" class="form-label-lg"><strong>Title</strong></label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        [(ngModel)]="eventDto.title"
+                        name="title"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="description" class="form-label-lg"><strong>Description</strong></label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="description"
+                        [(ngModel)]="eventDto.description"
+                        name="description"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="trainer" class="form-label-lg"><strong>Trainer (ID)</strong></label>
+                <input
+                        type="number"
+                        class="form-control"
+                        id="trainer"
+                        [(ngModel)]="eventDto.trainerId"
+                        name="trainerId"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="startHour" class="form-label-lg"><strong>Start Hour</strong></label>
+                <p>{{ currentEvent.startHour }}</p>
+                <input
+                        *ngIf="!startHourDate"
+                        type="time"
+                        [(ngModel)]="startHourDate"
+                        name="startHourDate"
+                        class="form-control"
+                />
+                <button
+                        *ngIf="startHourDate"
+                        type="button"
+                        class="btn btn-sm btn-secondary mt-2"
+                        (click)="startHourDate = undefined"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="endHour" class="form-label-lg"><strong>End Hour</strong></label>
+                <p>{{ currentEvent.endHour }}</p>
+                <input
+                        *ngIf="!endHourDate"
+                        type="time"
+                        [(ngModel)]="endHourDate"
+                        name="endHourDate"
+                        class="form-control"
+                />
+                <button
+                        *ngIf="endHourDate"
+                        type="button"
+                        class="btn btn-sm btn-secondary mt-2"
+                        (click)="endHourDate = undefined"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="days" class="form-label-lg"><strong>Days</strong></label>
+                <div *ngFor="let day of days" class="form-check">
+                  <input
+                          type="checkbox"
+                          class="form-check-input"
+                          [id]="day"
+                          [value]="day"
+                          (change)="toggleDay(day)"
+                          [checked]="selectedDays.includes(day)"
+                  />
+                  <label class="form-check-label" [for]="day">{{ day }}</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="imageName" class="form-label-lg"><strong>Image</strong></label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="imageName"
+                        [(ngModel)]="eventDto.imageName"
+                        name="imageName"
+                />
+                <input
+                        type="file"
+                        class="form-control-file mt-2"
+                        id="imageUpload"
+                        (change)="onFileSelected($event)"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+                  type="submit"
+                  class="badge badge-success mb-2"
+                  style="background-color: black; border-color: black;"
+          >
+            Update
+          </button>
+        </form>
+        <button
+                class="badge badge-danger mr-2"
+                (click)="deleteEvent()"
+                style="background-color: black; border-color: black;"
+        >
+          Delete
+        </button>
+        <p>{{ message }}</p>
+      </div>
+    </div>
+    <ng-template #cannotAccessEvent>
+      <p>Cannot access this Event...</p>
+    </ng-template>
+  </div>
+</div>

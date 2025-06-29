@@ -1,0 +1,59 @@
+<div class="subscription-plans-container">
+  <div class="header">
+    <h1>Alege-ți abonamentul perfect</h1>
+    <p>Alege din oferta noastră de abonamente și bucură-te de beneficii exclusive</p>
+  </div>
+
+  <p-progressSpinner *ngIf="loading" class="loading-spinner"></p-progressSpinner>
+
+  <div class="p-grid p-justify-center" *ngIf="!loading">
+    <div class="p-col-12 p-md-4 p-lg-3" *ngFor="let plan of plans">
+      <div class="pricing-card" [ngClass]="{ 'featured': plan.name === 'PREMIUM' }">
+        <div class="pricing-header">
+          <h3>{{ plan.displayName }}</h3>
+          <div class="price">
+            <span class="amount">{{ plan.price }} {{ plan.currency }}</span>
+            <span class="period">/ lună</span>
+          </div>
+          <p class="billing-cycle">Facturare lunară</p>
+        </div>
+        
+        <div class="pricing-features">
+          <ul>
+            <li *ngIf="plan.maxGymAccessPerWeek">
+              <i class="pi pi-check"></i>
+              Acces la sală de {{ plan.maxGymAccessPerWeek }} ori pe săptămână
+            </li>
+            <li *ngIf="plan.personalTrainerIncluded">
+              <i class="pi pi-check"></i>
+              Antrenor personal inclus
+            </li>
+            <li *ngIf="plan.allGymsAccess">
+              <i class="pi pi-check"></i>
+              Acces la toate sălile din rețea
+            </li>
+            <li *ngIf="plan.groupClassesIncluded">
+              <i class="pi pi-check"></i>
+              Clase de grup nelimitate
+            </li>
+            <li *ngIf="plan.personalTrainingSessions && plan.personalTrainingSessions > 0">
+              <i class="pi pi-check"></i>
+              {{ plan.personalTrainingSessions }} ședințe cu antrenor personal
+            </li>
+          </ul>
+        </div>
+        
+        <div class="pricing-footer">
+          <button 
+            pButton 
+            pRipple 
+            type="button" 
+            [label]="'Alege ' + plan.displayName"
+            [class]="plan.name === 'PREMIUM' ? 'p-button-raised p-button-rounded' : 'p-button-outlined p-button-rounded'"
+            (click)="selectPlan(plan)">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

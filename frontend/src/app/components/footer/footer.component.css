@@ -1,0 +1,22 @@
+:root {
+  --footer-bg: #2e7d32;        /* verde închis */
+  --footer-link: #e8f5e9;      /* verde foarte deschis pentru text */
+  --footer-link-hover: #ffb74d; /* portocaliu deschis ca accent */
+}
+
+.footer {
+  background: var(--footer-bg) !important;
+  color: var(--footer-link) !important;
+  padding: 2rem 0;
+}
+
+.footer-link {
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--footer-link-hover);
+  text-decoration: underline;
+}
